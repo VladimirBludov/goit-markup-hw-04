@@ -9,9 +9,10 @@
   --secondary-white-color: rgba(255, 255, 255, 0.6);
   --secondary-bg-color: #2f303a;
   --third-bg-color: #f5f4fa;
-  --link-footer-color: rgba(255, 255, 255, 0.6);
+  --footer-bg-link-color: rgba(255, 255, 255, 0.1);
   --border-bottom-colors: #ececec;
   --secondary-border-bottom-colors: #eeeeee;
+  --primary-icon-color: #afb1b8;
 }
 
 body {
@@ -44,6 +45,20 @@ ul {
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 /* Header */
@@ -100,6 +115,7 @@ ul {
   line-height: 1.14;
   letter-spacing: 0.02em;
 
+  outline: none;
   text-decoration: none;
 }
 
@@ -126,7 +142,8 @@ ul {
 }
 
 .contacts-header .link {
-  display: block;
+  display: flex;
+  align-items: center;
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -136,6 +153,7 @@ ul {
   line-height: 1.14;
   letter-spacing: 0.02em;
 
+  outline: none;
   text-decoration: none;
 }
 
@@ -144,12 +162,29 @@ ul {
   color: var(--accent-color);
 }
 
+.contacts-header .item-icon {
+  margin-right: 10px;
+  fill: currentColor;
+}
+
 /* Footer */
 
-.footer-container {
+.footer {
+  max-width: 1600px;
+  margin-right: auto;
+  margin-left: auto;
   padding-top: 60px;
   padding-bottom: 57px;
+
   background-color: var(--secondary-bg-color);
+}
+
+.footer-container {
+  display: flex;
+}
+
+.address-container {
+  margin-right: 70px;
 }
 
 /* Logo */
@@ -195,12 +230,13 @@ ul {
 .contacts-footer .link {
   display: block;
 
-  color: var(--link-footer-color);
+  color: var(--secondary-white-color);
   font-style: normal;
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
 
+  outline: none;
   text-decoration: none;
 }
 
@@ -209,15 +245,72 @@ ul {
   color: var(--accent-color);
 }
 
+/* Social links footer */
+
+.social-container .title {
+  padding-top: 12px;
+  padding-bottom: 20px;
+
+  color: var(--primary-white-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.footer-social-list {
+  display: flex;
+  list-style: none;
+}
+
+.footer-social-list .social-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.footer-social-list .social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+
+  color: var(--primary-white-color);
+  background-color: var(--footer-bg-link-color);
+  outline: none;
+}
+
+.footer-social-list .social-link:hover,
+.footer-social-list .social-link:focus {
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+}
+
+.footer-social-list .item-icon {
+  fill: currentColor;
+}
+
 /* Studio page */
 
 /* Hero section */
 
 .hero {
+  height: 600px;
+  max-width: 1600px;
+  margin-right: auto;
+  margin-left: auto;
   padding-top: 200px;
   padding-bottom: 200px;
 
   background-color: var(--secondary-bg-color);
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url('../images/hero-bg-img.jpg');
+
   text-align: center;
 }
 
@@ -233,6 +326,7 @@ ul {
 }
 
 .hero-button {
+  border: 0;
   padding: 10px 32px;
 
   color: var(--primary-white-color);
@@ -251,11 +345,6 @@ ul {
 
 /* Advantages section */
 
-.advantages-title {
-  /* Temporary style */
-  font-size: 0;
-}
-
 .advantages-list {
   display: flex;
   list-style: none;
@@ -267,6 +356,14 @@ ul {
 
 .advantages-list .item:not(:last-child) {
   margin-right: 30px;
+}
+
+.advantages-list .icon-container {
+  margin-bottom: 30px;
+  padding: 25px 100px;
+  border-radius: 4px;
+
+  background-color: var(--third-bg-color);
 }
 
 .advantages-list .title {
@@ -355,8 +452,6 @@ ul {
 
 .team-list .content {
   padding-top: 30px;
-  padding-bottom: 30px;
-
   text-align: center;
 }
 
@@ -376,12 +471,84 @@ ul {
   letter-spacing: 0.03em;
 }
 
-/* Portfolio page */
-
-.portfolio-title {
-  /* Temporary style */
-  font-size: 0;
+.team-social-list {
+  display: flex;
+  padding: 16px 32px 30px;
+  list-style: none;
 }
+
+.team-social-list .social-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.team-social-list .social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+
+  color: var(--primary-icon-color);
+  outline: none;
+}
+
+.team-social-list .social-link:hover,
+.team-social-list .social-link:focus {
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+}
+
+.team-social-list .item-icon {
+  fill: currentColor;
+}
+
+/* Clients section */
+
+.clients-title {
+  margin-bottom: 50px;
+
+  color: var(--title-text-color);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.17;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.clients-list {
+  display: flex;
+  list-style: none;
+}
+
+.clients-list .item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.clients-list .item-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 170px;
+  min-height: 92px;
+  border: 1px solid var(--primary-icon-color);
+  border-radius: 4px;
+
+  color: var(--primary-icon-color);
+  outline: none;
+}
+
+.clients-list .item-link:hover,
+.clients-list .item-link:focus {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.clients-list .item-icon {
+  fill: currentColor;
+}
+
+/* Portfolio page */
 
 /* Filter list */
 
@@ -412,12 +579,15 @@ ul {
   letter-spacing: 0.03em;
 
   cursor: pointer;
+  outline: none;
 }
 
 .filter-list .button:hover,
 .filter-list .button:focus {
   color: var(--primary-white-color);
   background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 /* Works list */
@@ -445,6 +615,13 @@ ul {
   display: block;
   color: var(--primary-text-color);
   text-decoration: none;
+  outline: none;
+}
+
+.works-list .link:hover,
+.works-list .link:focus {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 .works-list .img {
